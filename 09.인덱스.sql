@@ -22,16 +22,27 @@ SELECT dept_id, dept_name, location
   FROM tbl_department
  WHERE dept_id >= 1; -- 인덱스의 범위 조건은 검색 엔진이 Index Range Scan 또는 Full Table Scan 중 선택해서 동작한다.
  
+ 
+ 
+ 
  /* 보조 인덱스 만들기 */
  CREATE INDEX ix_name
     ON tbl_employee(emp_name ASC);
     
+-- 정상적으로 인덱스 태우기    
 SELECT emp_id, dept_id, emp_name, position, gender, hire_date, salary
   FROM tbl_employee
  WHERE emp_name = '이은영';
-    
  
+-- Index Range Scan    
+ SELECT emp_id, dept_id, emp_name, position, gender, hire_date, salary
+  FROM tbl_employee
+ WHERE emp_name LIKE '이%';
  
+ -- Index Table Scan(인덱스가 설정된 칼럼을 함수 처리했기 때문)
+ SELECT emp_id, dept_id, emp_name, position, gender, hire_date, salary
+  FROM tbl_employee
+ WHERE SUBSTRING(emp_name, 1, 1) = '이은영'; -- SUBSTRING(emp_name, 1, 1) : 1번째 글자부터 1글자만 추출
  
  
  
