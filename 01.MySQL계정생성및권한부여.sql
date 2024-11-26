@@ -40,6 +40,8 @@ DROP DATABASE testdb;
 GRANT ALL PRIVILEGES ON testdb.* TO 'greenit'@'%'; -- testdb 스키마의 모든 객체 사용 권한을 부여함
 GRANT ALL PRIVILEGES ON db_company.* TO 'greenit'@'%';
 GRANT ALL PRIVILEGES ON db_menu.* TO 'greenit'@'%';
+GRANT ALL PRIVILEGES ON db_bookstore.* TO 'greenit'@'%';
+GRANT ALL PRIVILEGES ON db_product.* TO 'greenit'@'%';
 
 -- greenit 사용자의 권한 확인하기
 SHOW GRANTS FOR 'greenit'@'%';
